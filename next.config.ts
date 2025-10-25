@@ -1,7 +1,13 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import withPWA from 'next-pwa'
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+const nextConfig = {
+  reactStrictMode: true,
+}
 
-export default nextConfig;
+// @ts-ignore – next-pwa types lag a little behind Next.js
+export default withPWA({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+})(nextConfig)
